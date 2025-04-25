@@ -40,7 +40,7 @@ for i in range(C):
 
 objective = solver.Objective()
 for i in range(C):
-    objective.SetCoefficient(xi[i] * Li[i]git )
+    objective.SetCoefficient(xi[i],Li[i])
 objective.SetMaximization()
 
 #resolver
