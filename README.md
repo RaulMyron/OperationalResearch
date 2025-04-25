@@ -1,6 +1,6 @@
 # OperationalResearch
 This is a basics for google ORtools + OR studies
-The documentation can be found [here](https://developers.google.com/optimization/examples)
+The documentation can be found [here](https://developers.google.com/optimization/examples) and [example](https://developers.google.com/optimization/lp/lp_example) or in [git](https://github.com/google/or-tools/blob/stable/ortools/linear_solver/samples/linear_programming_example.py)
 
 Please install the module
 `python -m pip install ortools`
