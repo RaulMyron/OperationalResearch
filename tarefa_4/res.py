@@ -1,3 +1,4 @@
+
 from ortools.linear_solver import pywraplp
 
 solver = pywraplp.Solver.CreateSolver('GLOP')
@@ -38,9 +39,10 @@ for i in range(M):
     for j in range(N):
         constraint.SetCoefficient(x[i, j], 1)
 
-# Restrição 2: Capacidade máxima de cada armazém não pode ser excedida
+# Restrição 2: Capacidade de cada armazém deve ser respeitada
+# cada armazém receberá exatamente sua capacidade
 for j in range(N):
-    constraint = solver.Constraint(0, S[j])
+    constraint = solver.Constraint(S[j], S[j])
     for i in range(M):
         constraint.SetCoefficient(x[i, j], 1)
 
@@ -54,8 +56,8 @@ objective.SetMinimization()
 # Resolver o problema
 status = solver.Solve()
 
-print(f"Valor objetivo = {objective.Value()}")
-
+    print(f"Valor objetivo = {objective.Value()}")
+    
 for i in range(M):
     linha = "["
     for j in range(N):
