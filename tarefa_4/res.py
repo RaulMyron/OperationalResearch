@@ -1,10 +1,9 @@
-
 from ortools.linear_solver import pywraplp
 
-solver = pywraplp.Solver.CreateSolver('GLOP')
+solver = pywraplp.Solver.CreateSolver("GLOP")
 
-M = int(input()) # fazendas
-N = int(input()) # armazéns
+M = int(input())  # fazendas
+N = int(input())  # armazéns
 
 # Matriz de custo de transporte (M x N)
 C = []
@@ -29,7 +28,7 @@ for j in range(N):
 x = {}
 for i in range(M):
     for j in range(N):
-        x[i, j] = solver.NumVar(0, solver.infinity(), f'x_{i}_{j}')
+        x[i, j] = solver.NumVar(0, solver.infinity(), f"x_{i}_{j}")
 
 # Restrições
 
@@ -56,13 +55,10 @@ objective.SetMinimization()
 # Resolver o problema
 status = solver.Solve()
 
-    print(f"Valor objetivo = {objective.Value()}")
-    
+print(f"Valor objetivo = {objective.Value()}")
 for i in range(M):
     linha = "["
     for j in range(N):
-        if j > 0:
-            linha += " "
-        linha += "{:.2f}".format(x[i, j].solution_value())
+        linha = linha + " " + "{:.2f}".format(x[i, j].solution_value())
     linha += " ]"
     print(linha)
